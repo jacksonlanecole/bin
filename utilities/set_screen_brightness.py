@@ -74,7 +74,7 @@ class Backlight:
 
         return brightness_valid
 
-    def set_brightness(self, val: int) -> bool:
+    def set_brightness(self, val: int, set_at_lim=False) -> bool:
         brightness_abs = self.convert_to_abs(val)
         if self.check_brightness_setting(brightness_abs):
             os.system("sudo echo {} > {}".format(
@@ -83,6 +83,13 @@ class Backlight:
                 )
             )
             return True
+        elif set_at_lim:
+            os.system("sudo echo {} > {}".format(
+                str(self.max),
+                self.files['current']
+                )
+            )
+            return False
         else:
             return False
 
@@ -95,7 +102,7 @@ class Backlight:
             'increase': current + val,
             'decrease': current - val,
         }[direction]
-        self.set_brightness(val_to_set)
+        self.set_brightness(val_to_set, set_at_lim=True)
 
         return True
 
