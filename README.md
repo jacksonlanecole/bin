@@ -1,6 +1,6 @@
 # bin
 
-This is my personal bin directory. It lives in `$HOME/<myusername>/bin`
+This is my personal bin directory. It lives in `$HOME/bin`
 and contains some more commonly used tools and utilities.
 
 ## TODO (Jackson Cole <jackson@jacksoncole.io>)
