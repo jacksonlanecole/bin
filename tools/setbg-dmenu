@@ -1,0 +1,4 @@
+#!/bin/sh
+# A simple dmenu wrapper for selecting wallpapers from the wallpaper directory
+
+ls $WALLPAPERS | dmenu -p "setbg" -l 10 | xargs -I {} setbg $WALLPAPERS/{}
