@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+display_usage() {
+cat <<EOF
+Usage: tmux_dev_setup [tmux session name]
+EOF
+}
+
+if [ $# -ne 1 ]; then
+    display_usage
+else
+    tmux new -s $1 \; \
+        set-option -g allow-rename off \; \
+        rename-window explore \; \
+        new-window -n write \; \
+        new-window -n build \; \
+        new-window -n test \; \
+        new-window -n research
+fi
