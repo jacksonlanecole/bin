@@ -3,7 +3,8 @@
 author     : Jackson Cole
 email      : <jackson@jacksoncole.io>
 contact    : Jackson Cole <jackson@jacksoncole.io>
-description: A simple program to control my screen brightness.
+description: A simple program to control my screen brightness on my
+             archbook pro.
 """
 import argparse
 import os
