@@ -1,0 +1,6 @@
+#!/bin/sh
+# Shamelessly borrowing this from Luke Smith
+# https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/tools/setbg
+
+[ ! -z "$1" ] && cp "$1" ~/.config/wall.png && notify-send -i "$HOME/.config/wall.png" "Wallpaper changed."
+xwallpaper --zoom ~/.config/wall.png
