@@ -4,12 +4,16 @@ author     : Jackson Cole
 email      : <jackson@jacksoncole.io>
 contact    : Jackson Cole <jackson@jacksoncole.io>
 description: A simple program to control my screen brightness on my
-             archbook pro.
+             archbook pro. Note: it's not perfect!
 """
 import argparse
 import os
 import subprocess
 import sys
+
+# TODO (Jackson Cole <jackson@jacksoncole.io>)
+# - The case where the brightness value dips below the minimum brightness
+# setting in this file is a bit wonky. This needs to be sorted.
 
 
 def main(argv):
