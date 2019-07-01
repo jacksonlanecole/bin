@@ -3,4 +3,4 @@
 # https://github.com/LukeSmithxyz/voidrice/blob/archi3/.local/bin/tools/setbg
 
 [ ! -z "$1" ] && cp "$1" ~/.config/wall.png
-feh --bg-scale ~/.config/wall.png &
+feh --bg-fill ~/.config/wall.png &
