@@ -1,0 +1,50 @@
+#!/bin/sh
+# #############################################################################
+# scratchpad
+# -----------------------------------------------------------------------------
+# Author : Jackson Cole
+# Email  : Jackson Cole <jackson@jacksoncole.io>
+# Website: jacksoncole.io
+# #############################################################################
+
+set -e
+
+if [ -z "$EDITOR" ]; then
+    editor=vim
+else
+    editor=$EDITOR
+fi
+
+while getopts 'd:' option; do
+    case $option in
+        d) scratchpad_date="$OPTARG"; use_alt_scratchpad=true
+        ;;
+        \?) exit 1
+        ;;
+    esac
+done
+
+scratchpad_dir="$HOME/.scratchpad"
+today="$(date +%Y%m%d)"
+today_long="$(date +"%b %d, %Y")"
+scratch_file="scratchpad-$today.md"
+scratch_file_path="$scratchpad_dir/$scratch_file"
+
+if $use_alt_scratchpad; then
+    scratch_file_path="$scratchpad_dir/scratchpad-$scratchpad_date.md"
+    if [ ! -f "$scratch_file_path" ]; then
+        echo "$scratch_file_path does not exist." >&2
+        exit 1;
+    fi
+else
+    if [ ! -d $scratchpad_dir ]; then
+        mkdir -p $scratchpad_dir
+    fi
+
+    if [ ! -f $scratch_file_path ]; then
+        touch $scratch_file_path
+        echo "# Scratchpad - $today_long" >> $scratch_file_path
+    fi
+fi
+
+$editor $scratch_file_path
