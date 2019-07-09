@@ -1,0 +1,41 @@
+#!/bin/sh
+
+display_usage() {
+cat <<EOF
+Usage: [-c <path_to_script>] [-a <argument to pass to script>] [-n <job_name>]
+    -c | ...
+    -a | ...
+    -n | ...
+EOF
+}
+
+set -e
+
+while getopts "c:a:n:" option; do
+    case $option in
+        c) path_to_script="$OPTARG" ;;
+        a) arg="$OPTARG" ;;
+        n) job_name="$OPTARG" ;;
+        \?) exit 1;
+    esac
+done
+
+divider="# -----------------------------------------------------------------------------"
+today=$(date)
+
+cat <<EOF
+$divider
+Job   : $job_name
+Date  : $today
+Script: $path_to_script $arg
+$divider
+
+EOF
+
+output=$($path_to_script)
+
+cat <<EOF
+$output
+
+$divider
+EOF
