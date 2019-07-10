@@ -14,5 +14,6 @@ else
         new-window -n edit \; \
         new-window -n build \; \
         new-window -n test \; \
-        new-window -n research
+        new-window -n research \; \
+        new-window -n git
 fi
