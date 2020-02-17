@@ -15,6 +15,7 @@ else
     editor=$EDITOR
 fi
 
+use_alt_scratchpad=false
 while getopts 'd:' option; do
     case $option in
         d) scratchpad_date="$OPTARG"; use_alt_scratchpad=true
